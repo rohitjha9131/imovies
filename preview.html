@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMovies - Interactive Redesign Showcase</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root,
+    [data-theme="amethyst"] {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg-deep: #090614;
+      --bg-surface: #130d24;
+      --bg-surface-elevated: #1d1436;
+      --bg-card: rgba(26, 17, 50, 0.75);
+      --border-subtle: rgba(168, 85, 247, 0.15);
+      --border-glow: rgba(168, 85, 247, 0.4);
+      --cinema-red: #8b5cf6;
+      --cinema-red-hover: #a78bfa;
+      --cinema-gold: #facc15;
+      --cinema-cyan: #ec4899;
+      --seat-available: #10b981;
+      --seat-booked: #36294c;
+      --seat-locked: #f97316;
+      --seat-selected: #c084fc;
+      --text-primary: #faf5ff;
+      --text-secondary: #d8b4fe;
+      --shadow-glow-red: 0 8px 30px rgba(139, 92, 246, 0.45);
+      --shadow-glow-gold: 0 8px 30px rgba(250, 204, 21, 0.25);
+      --brand-gradient: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      --nav-bg: rgba(19, 13, 36, 0.88);
+      --dock-bg: rgba(19, 13, 36, 0.95);
+      --body-radial-1: rgba(139, 92, 246, 0.2);
+      --body-radial-2: rgba(236, 72, 153, 0.12);
+      --body-radial-3: rgba(250, 204, 21, 0.05);
+    }
+
+    [data-theme="cyber"] {
+      --bg-deep: #070914;
+      --bg-surface: #0e1224;
+      --bg-surface-elevated: #161b36;
+      --bg-card: rgba(18, 24, 50, 0.75);
+      --border-subtle: rgba(168, 85, 247, 0.15);
+      --border-glow: rgba(168, 85, 247, 0.35);
+      --cinema-red: #a855f7;
+      --cinema-red-hover: #c084fc;
+      --cinema-gold: #facc15;
+      --cinema-cyan: #00f2fe;
+      --seat-available: #10b981;
+      --seat-booked: #232b45;
+      --seat-locked: #f97316;
+      --seat-selected: #00f2fe;
+      --text-primary: #f8fafc;
+      --text-secondary: #c4b5fd;
+      --shadow-glow-red: 0 8px 30px rgba(168, 85, 247, 0.4);
+      --shadow-glow-gold: 0 8px 30px rgba(250, 204, 21, 0.25);
+      --brand-gradient: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+      --nav-bg: rgba(14, 18, 36, 0.88);
+      --dock-bg: rgba(14, 18, 36, 0.95);
+      --body-radial-1: rgba(168, 85, 247, 0.16);
+      --body-radial-2: rgba(0, 242, 254, 0.08);
+      --body-radial-3: rgba(250, 204, 21, 0.04);
+    }
+
+    [data-theme="emerald"] {
+      --bg-deep: #03100c;
+      --bg-surface: #081d17;
+      --bg-surface-elevated: #0e2b23;
+      --bg-card: rgba(11, 38, 30, 0.75);
+      --border-subtle: rgba(16, 185, 129, 0.15);
+      --border-glow: rgba(16, 185, 129, 0.4);
+      --cinema-red: #10b981;
+      --cinema-red-hover: #34d399;
+      --cinema-gold: #fbbf24;
+      --cinema-cyan: #2dd4bf;
+      --seat-available: #059669;
+      --seat-booked: #1a3830;
+      --seat-locked: #f97316;
+      --seat-selected: #2dd4bf;
+      --text-primary: #ecfdf5;
+      --text-secondary: #a7f3d0;
+      --shadow-glow-red: 0 8px 30px rgba(16, 185, 129, 0.4);
+      --shadow-glow-gold: 0 8px 30px rgba(251, 191, 36, 0.25);
+      --brand-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --nav-bg: rgba(8, 29, 23, 0.88);
+      --dock-bg: rgba(8, 29, 23, 0.95);
+      --body-radial-1: rgba(16, 185, 129, 0.18);
+      --body-radial-2: rgba(45, 212, 191, 0.12);
+      --body-radial-3: rgba(251, 191, 36, 0.05);
+    }
+
+    [data-theme="amber"] {
+      --bg-deep: #0e0a05;
+      --bg-surface: #1c130a;
+      --bg-surface-elevated: #281b0e;
+      --bg-card: rgba(38, 26, 14, 0.75);
+      --border-subtle: rgba(245, 158, 11, 0.15);
+      --border-glow: rgba(245, 158, 11, 0.4);
+      --cinema-red: #f59e0b;
+      --cinema-red-hover: #fbbf24;
+      --cinema-gold: #facc15;
+      --cinema-cyan: #f97316;
+      --seat-available: #10b981;
+      --seat-booked: #3d2c1d;
+      --seat-locked: #ea580c;
+      --seat-selected: #fbbf24;
+      --text-primary: #fffbeb;
+      --text-secondary: #fde68a;
+      --shadow-glow-red: 0 8px 30px rgba(245, 158, 11, 0.4);
+      --shadow-glow-gold: 0 8px 30px rgba(250, 204, 21, 0.25);
+      --brand-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      --nav-bg: rgba(28, 19, 10, 0.88);
+      --dock-bg: rgba(28, 19, 10, 0.95);
+      --body-radial-1: rgba(245, 158, 11, 0.18);
+      --body-radial-2: rgba(249, 115, 22, 0.12);
+      --body-radial-3: rgba(250, 204, 21, 0.05);
+    }
+
+    [data-theme="frost"] {
+      --bg-deep: #f1f5f9;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #e2e8f0;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --border-subtle: rgba(15, 23, 42, 0.1);
+      --border-glow: rgba(225, 29, 72, 0.3);
+      --cinema-red: #e11d48;
+      --cinema-red-hover: #f43f5e;
+      --cinema-gold: #d97706;
+      --cinema-cyan: #0284c7;
+      --seat-available: #10b981;
+      --seat-booked: #cbd5e1;
+      --seat-locked: #f97316;
+      --seat-selected: #0284c7;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --shadow-glow-red: 0 8px 25px rgba(225, 29, 72, 0.25);
+      --shadow-glow-gold: 0 8px 25px rgba(217, 119, 6, 0.2);
+      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --dock-bg: rgba(255, 255, 255, 0.96);
+      --body-radial-1: rgba(225, 29, 72, 0.08);
+      --body-radial-2: rgba(2, 132, 199, 0.08);
+      --body-radial-3: rgba(217, 119, 6, 0.04);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 0%, var(--body-radial-1) 0%, transparent 45%),
+        radial-gradient(circle at 90% 15%, var(--body-radial-2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, var(--body-radial-3) 0%, transparent 50%);
+      background-attachment: fixed;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .glass-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .glass-nav-pill {
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      padding: 10px 24px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-cinema {
+      background: var(--brand-gradient);
+      color: #ffffff !important;
+      border: none;
+      font-weight: 700;
+      border-radius: 9999px;
+      padding: 10px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-glow-red);
+      cursor: pointer;
+    }
+
+    .btn-cinema:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 35px var(--border-glow);
+    }
+
+    .btn-cinema-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff !important;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 9px 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-cinema-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    /* Modern Movie Card */
+    .movie-card-modern {
+      background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .movie-card-modern:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), var(--shadow-glow-red);
+    }
+
+    .movie-poster-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 140%;
+      overflow: hidden;
+      background-color: #131722;
+    }
+
+    .movie-poster-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .movie-card-modern:hover .movie-poster-wrap img {
+      transform: scale(1.08);
+    }
+
+    .movie-floating-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(10, 14, 24, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 184, 0, 0.3);
+      color: var(--cinema-gold);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    /* Screen and Seats */
+    .cinema-screen-container {
+      perspective: 600px;
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    .cinema-screen {
+      height: 20px;
+      background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.25));
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      box-shadow: 0 12px 35px rgba(255, 255, 255, 0.6), 0 0 50px rgba(0, 242, 254, 0.4);
+      transform: rotateX(-15deg);
+      margin: 0 auto;
+      width: 78%;
+    }
+
+    .cinema-screen-glow {
+      height: 70px;
+      background: radial-gradient(ellipse at 50% 0%, var(--border-glow) 0%, rgba(139, 92, 246, 0.12) 40%, transparent 70%);
+      width: 90%;
+      margin: 0 auto;
+      filter: blur(12px);
+    }
+
+    .seat-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px 8px 4px 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      margin: 3px;
+    }
+
+    .seat-box.available {
+      background-color: var(--seat-available);
+      color: #032b1f;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    }
+    .seat-box.available:hover {
+      transform: translateY(-3px) scale(1.15);
+      filter: brightness(1.25);
+    }
+
+    .seat-box.selected {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      color: #031b26;
+      box-shadow: 0 0 16px var(--seat-selected);
+      border: 2px solid #ffffff;
+      transform: translateY(-3px) scale(1.15);
+    }
+
+    .seat-box.locked {
+      background-color: var(--seat-locked);
+      color: #ffffff;
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    .seat-box.booked {
+      background-color: var(--seat-booked);
+      color: #64748b;
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+
+    /* Floating Dock */
+    .floating-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92%;
+      max-width: 860px;
+      background: var(--dock-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 16px 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px var(--border-glow);
+      z-index: 1040;
+    }
+
+    /* E-Ticket Card */
+    .ticket-card {
+      background: linear-gradient(145deg, #121829 0%, #0c101d 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .ticket-card::before, .ticket-card::after {
+      content: '';
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background-color: var(--bg-deep);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ticket-card::before { left: -18px; }
+    .ticket-card::after { right: -18px; }
+
+    .nav-pill-tab {
+      cursor: pointer;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all 0.25s;
+    }
+    .nav-pill-tab.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Interactive Theme Palette Selector */
+    .theme-picker-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+    }
+
+    .theme-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .theme-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .theme-btn.active {
+      transform: scale(1.15);
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="frost"] {
+      color-scheme: light;
+    }
+
+    [data-theme="frost"] .text-white {
+      color: #0f172a !important;
+    }
+
+    [data-theme="frost"] .btn-cinema {
+      color: #ffffff !important;
+    }
+
+    [data-theme="frost"] .cinema-screen {
+      background: linear-gradient(to bottom, #334155, rgba(51, 65, 85, 0.3));
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Header -->
+  <div class="py-3 sticky-top" style="z-index: 1020;">
+    <div class="container">
+      <div class="glass-nav-pill d-flex flex-wrap align-items-center justify-content-between gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 34px; height: 34px; background: var(--brand-gradient); box-shadow: var(--shadow-glow-red);">
+            🎬
+          </div>
+          <span style="font-family: var(--font-heading); font-size: 1.45rem; font-weight: 800;">
+            <span class="text-white">I</span><span style="color: var(--cinema-red);">Movies</span>
+          </span>
+        </div>
+
+        <!-- Section Switcher -->
+        <div class="d-flex align-items-center gap-1 p-1 bg-black bg-opacity-40 rounded-pill border border-white border-opacity-10">
+          <button class="nav-pill-tab active" onclick="switchView('home')">Home Showcase</button>
+          <button class="nav-pill-tab" onclick="switchView('seats')">Interactive Seats</button>
+          <button class="nav-pill-tab" onclick="switchView('ticket')">E-Ticket Pass</button>
+        </div>
+
+        <!-- Theme Color Switcher -->
+        <div class="d-flex align-items-center gap-2">
+          <div class="theme-picker-bar">
+            <span class="small text-secondary fw-semibold me-1 d-none d-sm-inline" style="font-size: 0.75rem;">Color:</span>
+            <button class="theme-btn active" data-theme-name="amethyst" title="Velvet Violet (Purple/Magenta)" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);" onclick="selectTheme('amethyst')"></button>
+            <button class="theme-btn" data-theme-name="emerald" title="Matrix Jade (Green/Teal)" style="background: linear-gradient(135deg, #10b981 0%, #2dd4bf 100%);" onclick="selectTheme('emerald')"></button>
+            <button class="theme-btn" data-theme-name="amber" title="Solar Amber (Gold/Flame)" style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);" onclick="selectTheme('amber')"></button>
+            <button class="theme-btn" data-theme-name="cyber" title="Ultraviolet Cyber (Violet/Cyan)" style="background: linear-gradient(135deg, #a855f7 0%, #00f2fe 100%);" onclick="selectTheme('cyber')"></button>
+            <button class="theme-btn" data-theme-name="frost" title="Pearl Slate (Clean Light Mode)" style="background: linear-gradient(135deg, #ffffff 0%, #8b5cf6 100%); border: 1px solid #cbd5e1;" onclick="selectTheme('frost')"></button>
+          </div>
+          <span class="badge px-3 py-2 rounded-pill small" style="background: var(--brand-gradient); color: #fff;">LIVE PREVIEW</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 1: HOME SHOWCASE -->
+  <div id="view-home" class="py-4">
+    <!-- Hero Banner -->
+    <div class="container mb-5">
+      <div class="glass-panel p-5 position-relative overflow-hidden" style="background: linear-gradient(to right, rgba(9,6,20,0.95) 40%, rgba(9,6,20,0.5) 100%), radial-gradient(circle at 75% 25%, var(--border-glow) 0%, transparent 60%), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center;">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <span class="badge px-3 py-1 rounded-pill mb-3 fw-bold" style="background: rgba(139,92,246,0.18); border: 1px solid var(--border-glow); color: var(--cinema-red);">
+              🔥 SPOTLIGHT PREMIERE
+            </span>
+            <h1 class="display-4 fw-black mb-3">Oppenheimer: The IMAX Experience</h1>
+            <p class="lead text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.6;">
+              The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb. Filmed with IMAX 70mm cameras for the ultimate sensory presentation.
+            </p>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill">★ 8.9 / 10</span>
+              <span class="badge bg-white bg-opacity-10 text-light px-3 py-2 rounded-pill">180 mins</span>
+              <span class="badge bg-white bg-opacity-10 text-light px-3 py-2 rounded-pill">English &bull; IMAX Laser 3D</span>
+            </div>
+            <!-- Repositioned Action Controls -->
+            <div class="d-flex flex-wrap gap-3 align-items-center">
+              <button class="btn btn-cinema px-4 py-2" onclick="switchView('seats')">
+                🎟️ Book Seats Now
+              </button>
+              <button class="btn btn-cinema-outline px-4 py-2" onclick="alert('Playing trailer in real deployment...')">
+                ▶ Watch Trailer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movie Catalogue Grid -->
+    <div class="container mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <span class="text-danger small fw-bold text-uppercase">✨ Now Showing in Cinemas</span>
+          <h2 class="text-white fw-bold m-0">Featured Blockbusters</h2>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 mb-5">
+        <!-- Card 1 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop" alt="Dune">
+              <div class="movie-floating-badge">★ 8.6</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Sci-Fi &bull; 166m</span>
+                <h5 class="text-white fw-bold mb-1">Dune: Part Two</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" alt="Interstellar">
+              <div class="movie-floating-badge">★ 8.7</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Adventure &bull; 169m</span>
+                <h5 class="text-white fw-bold mb-1">Interstellar</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop" alt="Inception">
+              <div class="movie-floating-badge">★ 8.8</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Thriller &bull; 148m</span>
+                <h5 class="text-white fw-bold mb-1">Inception</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=800&auto=format&fit=crop" alt="Spider-Man">
+              <div class="movie-floating-badge">★ 8.8</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Animation &bull; 140m</span>
+                <h5 class="text-white fw-bold mb-1">Across the Spider-Verse</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 (NEW) -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Kalki 2898 AD">
+              <div class="movie-floating-badge">★ 8.2</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Sci-Fi &bull; 181m</span>
+                <h5 class="text-white fw-bold mb-1">Kalki 2898 AD</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">Hindi / Telugu</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 (NEW) -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop" alt="Cyberpunk: Neon City 2099">
+              <div class="movie-floating-badge">★ 8.7</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Cyberpunk &bull; 142m</span>
+                <h5 class="text-white fw-bold mb-1">Cyberpunk: Neon City 2099</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 (NEW) -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=800&auto=format&fit=crop" alt="Joker: Folie à Deux">
+              <div class="movie-floating-badge">★ 7.3</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Drama &bull; 138m</span>
+                <h5 class="text-white fw-bold mb-1">Joker: Folie à Deux</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 (NEW) -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1568876694728-451bbf694b83?q=80&w=800&auto=format&fit=crop" alt="Deadpool & Wolverine">
+              <div class="movie-floating-badge">★ 7.9</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Action &bull; 128m</span>
+                <h5 class="text-white fw-bold mb-1">Deadpool & Wolverine</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <button class="btn btn-cinema btn-sm py-1 px-3" onclick="switchView('seats')">Book ↗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMING SOON SECTION -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <span class="small fw-bold text-uppercase" style="color: var(--cinema-cyan);">🚀 Highly Anticipated</span>
+          <h2 class="text-white fw-bold m-0">Coming Soon to Cinemas</h2>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        <!-- Coming Soon 1 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop" alt="The Batman: Part II">
+              <div class="movie-floating-badge" style="background: rgba(139,92,246,0.85); color: #fff; border: none;">OCT 2026</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Action &bull; 168m</span>
+                <h5 class="text-white fw-bold mb-1">The Batman: Part II</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <span class="badge bg-secondary bg-opacity-25 text-light px-2 py-1 small">Advance Soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming Soon 2 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop" alt="Avatar: Fire and Ash">
+              <div class="movie-floating-badge" style="background: rgba(139,92,246,0.85); color: #fff; border: none;">DEC 2025</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Fantasy &bull; 195m</span>
+                <h5 class="text-white fw-bold mb-1">Avatar: Fire and Ash</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <span class="badge bg-secondary bg-opacity-25 text-light px-2 py-1 small">Advance Soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming Soon 3 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Gladiator II">
+              <div class="movie-floating-badge" style="background: rgba(139,92,246,0.85); color: #fff; border: none;">NOV 2026</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Action &bull; 148m</span>
+                <h5 class="text-white fw-bold mb-1">Gladiator II</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <span class="badge bg-secondary bg-opacity-25 text-light px-2 py-1 small">Advance Soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming Soon 4 -->
+        <div class="col">
+          <div class="movie-card-modern">
+            <div class="movie-poster-wrap">
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop" alt="The Final Reckoning">
+              <div class="movie-floating-badge" style="background: rgba(139,92,246,0.85); color: #fff; border: none;">DEC 2026</div>
+            </div>
+            <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+              <div>
+                <span class="badge bg-white bg-opacity-10 text-secondary mb-2 rounded-pill">Thriller &bull; 160m</span>
+                <h5 class="text-white fw-bold mb-1">M:I - The Final Reckoning</h5>
+              </div>
+              <div class="pt-2 mt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="text-secondary small">English</span>
+                <span class="badge bg-secondary bg-opacity-25 text-light px-2 py-1 small">Advance Soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 2: INTERACTIVE SEATS -->
+  <div id="view-seats" class="py-4 d-none">
+    <div class="container mb-5">
+      <div class="glass-panel p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <span class="badge bg-danger rounded-pill px-2 py-1 small">IMAX LASER SCREEN 1</span>
+            <h3 class="text-white fw-bold m-0 mt-1">Oppenheimer</h3>
+            <span class="text-secondary small">PVR Superplex &bull; 07:30 PM &bull; Today</span>
+          </div>
+          <div class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill fw-bold">
+            ⏱ Hold Timer: 04:59
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-panel p-4 text-center">
+        <!-- 3D Curved Screen -->
+        <div class="cinema-screen-container">
+          <div class="cinema-screen"></div>
+          <div class="cinema-screen-glow"></div>
+          <span class="text-secondary small fw-bold tracking-wider text-uppercase">CURVED PROJECTION SCREEN</span>
+        </div>
+
+        <!-- Seats Grid -->
+        <div class="py-3" id="seats-container">
+          <!-- Dynamically populated rows -->
+        </div>
+
+        <!-- Legend -->
+        <div class="p-2 px-4 d-inline-flex flex-wrap gap-4 align-items-center rounded-pill border border-white border-opacity-10 mt-3" style="background: rgba(0,0,0,0.5);">
+          <span class="small d-flex align-items-center gap-1"><span class="seat-box available" style="width:16px;height:16px;"></span> Available</span>
+          <span class="small d-flex align-items-center gap-1"><span class="seat-box selected" style="width:16px;height:16px;"></span> Selected</span>
+          <span class="small d-flex align-items-center gap-1"><span class="seat-box locked" style="width:16px;height:16px;"></span> Locked (Hold)</span>
+          <span class="small d-flex align-items-center gap-1"><span class="seat-box booked" style="width:16px;height:16px;"></span> Booked</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Dock -->
+    <div id="seat-dock" class="floating-dock d-none">
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+        <div>
+          <span class="text-secondary small d-block">Selected Seats (<span id="dock-count">0</span>/8):</span>
+          <div class="d-flex align-items-center gap-2">
+            <div id="dock-chips" class="d-flex gap-1 flex-wrap"></div>
+            <span class="text-white fw-bold fs-5 ms-3" id="dock-total">₹0</span>
+          </div>
+        </div>
+        <button class="btn btn-cinema btn-lg px-4 py-2" onclick="switchView('ticket')">
+          Proceed to Pay ➔
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 3: E-TICKET PASS -->
+  <div id="view-ticket" class="py-4 d-none">
+    <div class="container" style="maxWidth: 780px;">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="text-white fw-bold m-0">Admission Boarding Pass</h2>
+          <span class="text-secondary small">Present this pass with QR code at the turnstile</span>
+        </div>
+        <button class="btn btn-cinema-outline btn-sm px-3 py-2" onclick="window.print()">
+          🖨️ Print Pass
+        </button>
+      </div>
+
+      <div class="ticket-card p-4 p-md-5 text-white mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div class="d-flex align-items-center gap-2">
+            <span class="fs-4">🎟️</span>
+            <span class="fw-bold fs-5 tracking-wider" style="font-family: var(--font-heading);">IMOVIES ENTRY PASS</span>
+          </div>
+          <span class="badge px-3 py-2 rounded-pill fw-bold" style="background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid rgba(16,185,129,0.4);">
+            CONFIRMED
+          </span>
+        </div>
+
+        <div class="row g-4 align-items-center">
+          <div class="col-md-7">
+            <h3 class="fw-bold mb-2">Oppenheimer</h3>
+            <p class="text-secondary small mb-3">English &bull; IMAX Laser 3D &bull; 180 mins</p>
+
+            <div class="p-3 rounded-3 mb-3" style="background: rgba(0,0,0,0.3);">
+              <div class="text-warning small fw-bold">📍 PVR Superplex, Screen 1 (IMAX)</div>
+              <div class="text-secondary small">Phoenix Marketcity, Kurla, Mumbai</div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-4 text-light small mb-3">
+              <div><span class="text-secondary d-block">DATE</span><strong>Today</strong></div>
+              <div><span class="text-secondary d-block">TIME</span><strong>07:30 PM</strong></div>
+              <div><span class="text-secondary d-block">FORMAT</span><strong>IMAX 3D</strong></div>
+            </div>
+
+            <div class="pt-3 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+              <div>
+                <span class="text-secondary small d-block">RESERVED SEATS</span>
+                <span class="badge bg-info text-dark fw-bold fs-6">E5</span>
+                <span class="badge bg-info text-dark fw-bold fs-6">E6</span>
+              </div>
+              <div>
+                <span class="text-secondary small d-block">TOTAL FARE</span>
+                <span class="text-warning fw-bold fs-4">₹500</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5 text-center border-start-md border-white border-opacity-10 ps-md-4">
+            <div class="bg-white p-3 rounded-4 d-inline-block shadow mb-2">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=IMOVIES-DEMO-PASS" alt="QR" width="140" height="140">
+            </div>
+            <div class="text-secondary small">
+              Verification Code:
+              <strong class="d-block text-white fs-5 font-monospace">IMV-8842-7193</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme switcher logic
+    function selectTheme(themeName) {
+      document.documentElement.setAttribute('data-theme', themeName);
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-theme-name') === themeName);
+      });
+      try {
+        localStorage.setItem('imovies-theme', themeName);
+      } catch (e) {}
+    }
+
+    // Load saved theme on boot
+    const savedTheme = localStorage.getItem('imovies-theme') || 'amethyst';
+    selectTheme(savedTheme);
+
+    // Tab switching logic
+    function switchView(viewName) {
+      document.getElementById('view-home').classList.add('d-none');
+      document.getElementById('view-seats').classList.add('d-none');
+      document.getElementById('view-ticket').classList.add('d-none');
+
+      document.getElementById('view-' + viewName).classList.remove('d-none');
+
+      document.querySelectorAll('.nav-pill-tab').forEach((el, idx) => {
+        el.classList.remove('active');
+        if ((viewName === 'home' && idx === 0) || (viewName === 'seats' && idx === 1) || (viewName === 'ticket' && idx === 2)) {
+          el.classList.add('active');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Interactive Seat Map Generator
+    const selected = new Set();
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
+    const seatsContainer = document.getElementById('seats-container');
+
+    rows.forEach(rowLetter => {
+      const rowDiv = document.createElement('div');
+      rowDiv.className = 'd-flex justify-content-center align-items-center mb-1';
+
+      const label = document.createElement('span');
+      label.className = 'text-secondary fw-bold me-2';
+      label.style.width = '20px';
+      label.innerText = rowLetter;
+      rowDiv.appendChild(label);
+
+      for (let i = 1; i <= 10; i++) {
+        const seatId = rowLetter + i;
+        const seat = document.createElement('div');
+        seat.className = 'seat-box available';
+        if (seatId === 'C4' || seatId === 'C5') seat.className = 'seat-box booked';
+        if (seatId === 'D7') seat.className = 'seat-box locked';
+
+        seat.innerText = i;
+        seat.onclick = () => {
+          if (seat.classList.contains('booked') || seat.classList.contains('locked')) return;
+          if (selected.has(seatId)) {
+            selected.delete(seatId);
+            seat.className = 'seat-box available';
+          } else {
+            if (selected.size >= 8) {
+              alert('Max 8 seats per reservation!');
+              return;
+            }
+            selected.add(seatId);
+            seat.className = 'seat-box selected';
+          }
+          updateDock();
+        };
+        rowDiv.appendChild(seat);
+      }
+      seatsContainer.appendChild(rowDiv);
+    });
+
+    function updateDock() {
+      const dock = document.getElementById('seat-dock');
+      const count = document.getElementById('dock-count');
+      const total = document.getElementById('dock-total');
+      const chips = document.getElementById('dock-chips');
+
+      if (selected.size > 0) {
+        dock.classList.remove('d-none');
+        count.innerText = selected.size;
+        total.innerText = '₹' + (selected.size * 250);
+        chips.innerHTML = Array.from(selected).map(s => 
+          `<span class="badge" style="background: rgba(0,242,254,0.2); color: var(--seat-selected); border: 1px solid var(--seat-selected); border-radius: 6px;">${s}</span>`
+        ).join('');
+      } else {
+        dock.classList.add('d-none');
+      }
+    }
+  </script>
+</body>
+</html>
